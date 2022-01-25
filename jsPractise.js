@@ -24,3 +24,15 @@ blockTitle.forEach( (item) => {
 })
 //=================================
 // 3. Делаем табы
+const tabs = document.querySelectorAll("[data-tab]")
+const tabsContent = document.querySelectorAll("[data-tab-content]")
+
+tabs.forEach( (item) => {
+    
+    item.addEventListener('click', function() {
+        tabsContent.forEach( (item) =>{
+            item.classList.add('hidden')
+        })
+        document.querySelector('#' + this.dataset.tab).classList.toggle('hidden')
+    })
+})
