@@ -36,3 +36,32 @@ tabs.forEach( (item) => {
         document.querySelector('#' + this.dataset.tab).classList.toggle('hidden')
     })
 })
+//====================================
+// 4. Делаем модальные окна
+
+const modalBtns = document.querySelectorAll('[data-modal-button]')
+const modalCloseBtns = document.querySelectorAll('[data-modal-close]')
+const modalWindows = document.querySelectorAll('[data-modal]')
+
+modalBtns.forEach((item) => {
+    item.addEventListener('click', function() {
+        const modalWindow = document.querySelector('#' + this.dataset.modalButton)
+        modalWindow.classList.toggle('hidden')
+        modalWindow.querySelector('.modal-window').addEventListener('click',
+            function(e) {
+                e.stopPropagation()
+            })
+        
+
+    })
+})
+modalCloseBtns.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.closest('[data-modal]').classList.toggle('hidden')
+    })
+})
+modalWindows.forEach((item) => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('hidden')
+    })
+})
